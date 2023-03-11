@@ -38,8 +38,7 @@ def proxyy(url):
 def proxx(url):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
     target_headers = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"}
-    payload = "channel=popazik"
-    response = requests.post(url, headers={**headers, **target_headers}, data=payload)
+    response = requests.post(url, headers={**headers, **target_headers})
     headers = {'Content-Type': 'text/html'}
     return Response(response.content, status=response.status_code, headers=headers)
 

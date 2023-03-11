@@ -42,5 +42,12 @@ def proxx(url):
     headers = {'Content-Type': 'text/html'}
     return Response(response.content, status=response.status_code, headers=headers)
 
+@app.route('/pronn/<path:url>', methods=['GET', 'POST'])
+def pronn(url):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
+    response = requests.post(url, headers={**headers})
+    headers = {'Content-Type': 'text/html'}
+    return Response(response.content, status=response.status_code)
+
 if __name__ == '__main__':
     app.run()

@@ -25,4 +25,5 @@ def getHTML(url):
     return Response(response.content, status=response.status_code, headers=headers)
 
 
-#app.run() 
+if __name__ == '__main__':
+    app.run()

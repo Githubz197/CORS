@@ -24,6 +24,15 @@ def getHTML(url):
     response = requests.get(url, headers=headers)
     return Response(response.content, status=response.status_code, headers=headers)
 
+@app.route('/proxyy/<path:url>', methods=['GET', 'POST'])
+def proxyy(url):
+    if request.method == 'POST':
+        data = request.get_json()
+        response = requests.post(url, json=data)
+    else:
+        response = requests.get(url)
+    headers = {'Content-Type': 'application/json'}
+    return Response(response.content, status=response.status_code, headers=headers)
 
 if __name__ == '__main__':
     app.run()

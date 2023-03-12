@@ -68,7 +68,6 @@ p {
   </head>
   <body>
 
-</br>
 <var id="Multi_container"></var>
 
     <script>
@@ -87,13 +86,13 @@ fetch('https://githubz197.github.io/twitch.txt')
         .then(response => response.json())
         .then(response => {
 console.log(username, response);
-          let state = 'OFFLINE';
+          let state = '';
           if (response.status === 'ok' || response.status === 'complete') {
-            state = 'ONLINE';
+            state = ' ';
           }
           console.log(`${username} is ${state}`);
           const p = document.createElement('p');
-          p.textContent = `${username} is ${state}`;
+          p.textContent = `${username}${state}`;
           container.insertAdjacentElement('afterend', p);
         })
         .catch(error => console.error(error));
@@ -127,7 +126,7 @@ console.log(username, response);
 			var paragraphs = document.getElementsByTagName("p");
 
 			for (var i = 0; i < paragraphs.length; i++) {
-				if (paragraphs[i].textContent.indexOf("ONLINE") !== -1) {
+				if (paragraphs[i].textContent.indexOf(" ") !== -1) {
 					paragraphs[i].classList.add("green");
 				} else {
 					paragraphs[i].classList.remove("green");

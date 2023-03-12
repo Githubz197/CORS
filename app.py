@@ -7,13 +7,13 @@ app.secret_key = "manbearpig_MUDMAN888"
 CORS(app)
 
 
-@app.route("/live")
+@app.route("/status")
 def ServerStatusLive():
     flash("We are LIVE")
     return render_template('live.html')
 
-@app.route("/online")
-def live():
+@app.route("/live")
+def WhoisLive():
     return render_template('online.html')
 
 # Font Calvin S - ASCII ART

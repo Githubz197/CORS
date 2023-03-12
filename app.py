@@ -8,9 +8,13 @@ CORS(app)
 
 
 @app.route("/live")
-def live():
+def ServerStatusLive():
     flash("We are LIVE")
     return render_template('live.html')
+
+@app.route("/online")
+def live():
+    return render_template('online.html')
 
 # Font Calvin S - ASCII ART
 

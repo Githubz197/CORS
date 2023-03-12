@@ -67,20 +67,26 @@ def proxyif(url):
 # ╠═╝│ │└─┐ │ : Request Post
 # ╩  └─┘└─┘ ┴ 
 
+# method GET happens when accesing the page that triggers the request.POST and returns a RESPONSE
 
-@app.route('/post/<path:url>', methods=['GET', 'POST']) # is this same as HTML?
+@app.route('/post/<path:url>', methods=['GET', 'POST']) # the methods just mean you can access and send
 def post(url):
     request_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
     response = requests.post(url, headers=request_headers)
     response_headers = {'Content-Type': 'text/html'}
     return Response(response.content, status=response.status_code, headers=response_headers)
 
-@app.route('/twitch/<path:url>', methods=['GET', 'POST']) # is this same as HTML?
-def twitch(url):
-    request_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
+@app.route('/twi/<path:url>', methods=['GET', 'POST'])
+def twi(url):
     target_headers = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"}
-    payload = "channel=popazik"
-    response = requests.post(url, headers={**request_headers, **target_headers}, data=payload)
+    
+    if request.method == 'POST':
+        username = request.form['channel']
+        payload = f"channel={username}"
+    else:
+        payload = None
+        
+    response = requests.post(url, headers=target_headers, data=payload)
     response_headers = {'Content-Type': 'text/html'}
     return Response(response.content, status=response.status_code, headers=response_headers)
 

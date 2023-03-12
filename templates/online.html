@@ -8,15 +8,15 @@
 
 <style>
 @import url('https://fonts.cdnfonts.com/css/bebas-kai');
-html *
-{
-   color: #FFF;
-   background-color: #222;
-   text-align: center;
-margin: 0;
-   font-family: 'Bebas Kai', sans-serif; !important;
-}
 
+
+html * {
+  color: #FFF;
+  background-color: #222;
+  text-align: center;
+  margin: 0;
+  font-family: 'Bebas Kai', sans-serif;
+}
 
 /* Fluid font size variables, for browsers that support clamp */
 @supports (font-size: clamp(1rem, 1vw, 1rem)) {
@@ -51,27 +51,16 @@ margin: 0;
 }
 
 /* Classes for fluid font sizes */
-.font-xs {
-  font-size: var(--font-xs);
+.font-xs {font-size: var(--font-xs);}
+.font-small {font-size: var(--font-small);}
+.font-medium {font-size: var(--font-medium);}
+.font-large {font-size: var(--font-large);}
+.font-xl {font-size: var(--font-xl);}
+
+p {
+  font-size: var(--font-large) !important;
+  max-height: 999999px;
 }
-
-.font-small {
-  font-size: var(--font-small);
-}
-
-.font-medium {
-  font-size: var(--font-medium);
-}
-
-.font-large {
-  font-size: var(--font-large);
-}
-
-.font-xl {
-  font-size: var(--font-xl);
-}
-
-
 
 </style>
 

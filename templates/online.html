@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Twitch Scannern !</title>
+<link href="https://fonts.cdnfonts.com/css/bebas-kai" rel="stylesheet">
+
+<style>
+@import url('https://fonts.cdnfonts.com/css/bebas-kai');
+html *
+{
+   font-size: 1.20em !important;
+   color: #FFF;
+   background-color: #222;
+   text-align: center;
+margin: 0;
+   font-family: 'Bebas Kai', sans-serif; !important;
+}
+</style>
+
+  </head>
+  <body>
+
+</br>
+<var id="Multi_container"></var>
+
+    <script>
+
+const container = document.getElementById('Multi_container');
+fetch('https://githubz197.github.io/twitch.txt')
+  .then(response => response.text())
+  .then(usernames => {
+    usernames.trim().split('\n').forEach(username => {
+      const payload = `channel=${username}`;
+      fetch('https://corstest.onrender.com/twi/https://r-1.ch/analyzer/analyze.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+        body: payload,
+      })
+        .then(response => response.json())
+        .then(response => {
+console.log(username, response);
+          let state = 'OFFLINE';
+          if (response.status === 'ok' || response.status === 'complete') {
+            state = 'ONLINE';
+          }
+          console.log(`${username} is ${state}`);
+          const p = document.createElement('p');
+          p.textContent = `${username} is ${state}`;
+          container.insertAdjacentElement('afterend', p);
+        })
+        .catch(error => console.error(error));
+    });
+  })
+  .catch(error => console.error(error));
+
+
+    </script>
+	<style type="text/css">
+		.green {
+			background-color: green;
+		}
+		.blue {
+			background: rgb(48,36,255);
+			background: linear-gradient(90deg, rgba(48,36,255,1) 0%, rgba(6,6,114,1) 49%, rgba(5,45,255,1) 100%); 
+		}
+		
+		a {
+        	color: #fff;
+		margin: 0;
+		text-decoration: none;
+			}
+
+	</style>
+	
+		<script type="text/javascript">
+		function checkMasha() {
+			var paragraphs = document.getElementsByTagName("p");
+
+			for (var i = 0; i < paragraphs.length; i++) {
+				if (paragraphs[i].textContent.indexOf("ONLINE") !== -1) {
+					paragraphs[i].classList.add("green");
+				} else {
+					paragraphs[i].classList.remove("green");
+				}
+			}
+			
+			for (var i = 0; i < paragraphs.length; i++) {
+				if (paragraphs[i].textContent.indexOf("[2]") !== -1) {
+					paragraphs[i].classList.add("blue");
+				} else {
+					paragraphs[i].classList.remove("blue");
+				}
+			}
+		}
+
+		setInterval(checkMasha, 5);
+	</script>
+
+
+
+
+  </body>
+</html>

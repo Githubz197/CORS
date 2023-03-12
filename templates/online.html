@@ -1,21 +1,78 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Twitch Scannern !</title>
+    <title>Twitch Scanner !</title>
 <link href="https://fonts.cdnfonts.com/css/bebas-kai" rel="stylesheet">
 
 <style>
 @import url('https://fonts.cdnfonts.com/css/bebas-kai');
 html *
 {
-   font-size: 1.20em !important;
    color: #FFF;
    background-color: #222;
    text-align: center;
 margin: 0;
    font-family: 'Bebas Kai', sans-serif; !important;
 }
+
+
+/* Fluid font size variables, for browsers that support clamp */
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --font-xs: clamp(0.64rem, 0.071vw + 0.626rem, 0.675rem);
+    --font-small: clamp(0.8rem, 0.2vw + 0.76rem, 0.9rem);
+    --font-medium: clamp(1rem, 0.4vw + 0.92rem, 1.2rem);
+    --font-large: clamp(1.25rem, 0.699vw + 1.11rem, 1.6rem);
+    --font-xl: clamp(1.563rem, 1.14vw + 1.335rem, 2.132rem);
+  }
+}
+
+/* Fallback variables for browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --font-xs: 0.64rem;
+    --font-small: 0.8rem;
+    --font-medium: 1rem;
+    --font-large: 1.25rem;
+    --font-xl: 1.563rem;
+  }
+
+  @media screen and (min-width: 1400px) {
+    :root {
+      --font-xs: 0.675rem;
+      --font-small: 0.9rem;
+      --font-medium: 1.2rem;
+      --font-large: 1.6rem;
+      --font-xl: 2.132rem;
+    }
+  }
+}
+
+/* Classes for fluid font sizes */
+.font-xs {
+  font-size: var(--font-xs);
+}
+
+.font-small {
+  font-size: var(--font-small);
+}
+
+.font-medium {
+  font-size: var(--font-medium);
+}
+
+.font-large {
+  font-size: var(--font-large);
+}
+
+.font-xl {
+  font-size: var(--font-xl);
+}
+
+
+
 </style>
 
   </head>
@@ -57,8 +114,15 @@ console.log(username, response);
 
     </script>
 	<style type="text/css">
+
+
+		p {
+  font-size: var(--font-large);
+			}
+
 		.green {
 			background-color: green;
+  font-size: var(--font-xl);
 		}
 		.blue {
 			background: rgb(48,36,255);
@@ -96,9 +160,6 @@ console.log(username, response);
 
 		setInterval(checkMasha, 5);
 	</script>
-
-
-
 
   </body>
 </html>

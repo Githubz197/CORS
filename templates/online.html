@@ -156,6 +156,7 @@ setInterval(function() {
       const link = document.createElement('a');
       link.href = `https://twitch.tv/${p.textContent}`;
       link.textContent = p.textContent;
+      link.target = "_blank";
       p.textContent = '';
       p.appendChild(link);
     }

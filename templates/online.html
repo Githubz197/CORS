@@ -115,6 +115,7 @@ console.log(username, response);
 		
 		a {
         	color: #fff;
+        	background-color: #3185ec87;
 		margin: 0;
 		text-decoration: none;
 			}
@@ -122,6 +123,7 @@ console.log(username, response);
 	</style>
 	
 		<script type="text/javascript">
+		// Add Colors to the usernames
 		function checkMasha() {
 			var paragraphs = document.getElementsByTagName("p");
 
@@ -144,6 +146,24 @@ console.log(username, response);
 
 		setInterval(checkMasha, 5);
 	</script>
+
+<script>
+// Add Links to the usernames
+setInterval(function() {
+  const ps = document.querySelectorAll('p.green');
+  ps.forEach(p => {
+    if (!p.querySelector('a')) {
+      const link = document.createElement('a');
+      link.href = `https://twitch.tv/${p.textContent}`;
+      link.textContent = p.textContent;
+      p.textContent = '';
+      p.appendChild(link);
+    }
+  });
+  console.log("Links added");
+}, 500);
+
+</script>
 
   </body>
 </html>
